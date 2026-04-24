@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Rizal — Museum-grade pastel academic design system. All colors HSL. */
+
+@layer base {
+  :root {
+    /* Core surfaces — warm cream paper */
+    --background: 38 44% 97%;
+    --foreground: 25 25% 18%;
+
+    --card: 38 50% 99%;
+    --card-foreground: 25 25% 18%;
+
+    --popover: 38 50% 99%;
+    --popover-foreground: 25 25% 18%;
+
+    /* Primary — deep ink charcoal */
+    --primary: 25 30% 20%;
+    --primary-foreground: 38 44% 97%;
+
+    /* Pastel palette */
+    --blush: 350 70% 90%;
+    --blush-deep: 350 55% 75%;
+    --cream: 40 55% 94%;
+    --powder: 205 55% 88%;
+    --powder-deep: 205 40% 70%;
+    --sage: 130 25% 80%;
+    --sage-deep: 135 20% 55%;
+    --lavender: 270 35% 88%;
+    --lavender-deep: 270 25% 65%;
+    --beige: 35 30% 88%;
+    --gold: 38 55% 60%;
+
+    --secondary: 38 35% 92%;
+    --secondary-foreground: 25 30% 25%;
+
+    --muted: 38 25% 93%;
+    --muted-foreground: 25 12% 45%;
+
+    --accent: 350 55% 88%;
+    --accent-foreground: 25 30% 22%;
+
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 38 44% 97%;
+
+    --border: 35 25% 86%;
+    --input: 35 25% 86%;
+    --ring: 350 45% 70%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--blush)) 0%, hsl(var(--cream)) 35%, hsl(var(--powder)) 100%);
+    --gradient-noli: linear-gradient(160deg, hsl(var(--blush)) 0%, hsl(var(--cream)) 100%);
+    --gradient-fili: linear-gradient(160deg, hsl(var(--lavender)) 0%, hsl(var(--sage)) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--cream)) 100%);
+    --gradient-ink: linear-gradient(135deg, hsl(25 30% 20%) 0%, hsl(25 25% 30%) 100%);
+
+    /* Glass */
+    --glass-bg: hsla(38, 50%, 99%, 0.6);
+    --glass-border: hsla(35, 30%, 80%, 0.4);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 24px -8px hsl(25 30% 20% / 0.08);
+    --shadow-elegant: 0 20px 60px -20px hsl(25 30% 20% / 0.15);
+    --shadow-glow: 0 0 80px hsl(var(--blush) / 0.4);
+
+    /* Motion */
+    --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-elegant: all 0.6s var(--ease-elegant);
+  }
+
+  .dark {
+    --background: 240 15% 10%;
+    --foreground: 38 30% 92%;
+
+    --card: 240 15% 13%;
+    --card-foreground: 38 30% 92%;
+
+    --popover: 240 15% 13%;
+    --popover-foreground: 38 30% 92%;
+
+    --primary: 38 35% 90%;
+    --primary-foreground: 240 15% 10%;
+
+    --blush: 350 30% 25%;
+    --blush-deep: 350 40% 60%;
+    --cream: 35 15% 18%;
+    --powder: 205 25% 25%;
+    --powder-deep: 205 30% 60%;
+    --sage: 135 15% 22%;
+    --sage-deep: 135 20% 55%;
+    --lavender: 270 20% 25%;
+    --lavender-deep: 270 25% 70%;
+    --beige: 35 15% 22%;
+
+    --secondary: 240 12% 18%;
+    --secondary-foreground: 38 30% 92%;
+
+    --muted: 240 12% 18%;
+    --muted-foreground: 38 15% 65%;
+
+    --accent: 350 25% 25%;
+    --accent-foreground: 38 30% 92%;
+
+    --border: 240 10% 22%;
+    --input: 240 10% 22%;
+    --ring: 350 40% 60%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(350 30% 18%) 0%, hsl(240 15% 12%) 50%, hsl(205 25% 18%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(240 15% 13%) 100%);
+
+    --glass-bg: hsla(240, 15%, 15%, 0.6);
+    --glass-border: hsla(38, 30%, 80%, 0.1);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection { background: hsl(var(--blush)); color: hsl(var(--primary)); }
+}
+
+@layer components {
+  .font-serif-display { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: -0.02em; }
+  .font-sans { font-family: 'Inter', sans-serif; }
+
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+  }
+
+  .container-narrow { @apply max-w-6xl mx-auto px-6 md:px-8; }
+  .container-prose { @apply max-w-3xl mx-auto px-6; }
+
+  .section-pad { @apply py-24 md:py-32; }
+
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium;
+  }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease-elegant), transform 1s var(--ease-elegant); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+  .hover-lift { transition: var(--transition-elegant); }
+  .hover-lift:hover { transform: translateY(-6px); box-shadow: var(--shadow-elegant); }
+
+  .ink-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .bg-gradient-noli { background: var(--gradient-noli); }
+  .bg-gradient-fili { background: var(--gradient-fili); }
+  .bg-gradient-soft { background: var(--gradient-soft); }
+  .bg-gradient-ink { background: var(--gradient-ink); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elegant { box-shadow: var(--shadow-elegant); }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+}
+
+/* Floating ambient pages */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-20px) rotate(calc(var(--r, 0deg) + 2deg)); }
+}
+@keyframes drift {
+  0% { transform: translate(0,0) rotate(0); opacity: 0; }
+  10%, 90% { opacity: 0.5; }
+  100% { transform: translate(40px, -120vh) rotate(20deg); opacity: 0; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-drift { animation: drift 22s linear infinite; }
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
